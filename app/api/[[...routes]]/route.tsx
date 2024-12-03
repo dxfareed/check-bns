@@ -1,6 +1,5 @@
 /** @jsxImportSource frog/jsx */
 
-import { color } from '@coinbase/onchainkit/theme'
 import { Button, Frog, TextInput } from 'frog'
 import { devtools } from 'frog/dev'
 import { neynar, pinata } from 'frog/hubs'
@@ -24,7 +23,6 @@ app.frame('/', (c) => {
     return c.res({
       action:'/create',
       image: `${process.env.NEXT_PUBLIC}/textyeat.png`,
-      //imageAspectRatio:"1:1",
       intents: [
         <Button value='A'>
           Create new meme
