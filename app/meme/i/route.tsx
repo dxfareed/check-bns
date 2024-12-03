@@ -9,6 +9,9 @@ export async function GET(request : Request){
     const hasText = searchParams.has('text');
     const text = hasText ? searchParams.get('text')?.slice(0, 100): '';
     const blue = "blue"
+    const sliced= text?.split(",");
+    const aboveText = sliced[0];
+    const belowText = sliced[1];
     const imageData = await fetch(
     new URL( './drake.jpg' , import.meta.url)
     ).then((res) => res.arrayBuffer());
@@ -51,7 +54,7 @@ export async function GET(request : Request){
                     textTransform:"capitalize",  
                 }}
                 >
-                    you're good
+                   {aboveText}
                 </div> 
                 <div
                 style={{
@@ -71,7 +74,7 @@ export async function GET(request : Request){
                     textTransform:"capitalize",   
                 }}
                 >
-                    you're based
+                    {belowText}
                 </div>
             </div>
         )
