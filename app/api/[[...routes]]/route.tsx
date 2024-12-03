@@ -7,10 +7,12 @@ import { handle } from 'frog/next'
 import { serveStatic } from 'frog/serve-static'
 //import { inspectRoutes } from 'hono/dev'
 
+
 const app = new Frog({
   assetsPath: '/',
   basePath: '/api',
-  hub: pinata(),
+  browserLocation: '/:path',
+  //hub: pinata(),
   title: 'Create Meme',
 })
 
@@ -18,8 +20,7 @@ const app = new Frog({
 // export const runtime = 'edge'
 
 app.frame('/', (c) => {
-  const {verified} =c;
-  if(verified){
+  //const {verified} =c;
     return c.res({
       action:'/create',
       image: `${process.env.NEXT_PUBLIC}/textyeat.png`,
@@ -29,8 +30,7 @@ app.frame('/', (c) => {
         </Button>
       ],
     })
-  }
-  return c.res({
+  /* return c.res({
     action:'/',
     image:(
       <div 
@@ -43,7 +43,7 @@ app.frame('/', (c) => {
         </div>  
   ), 
   intents: [<Button>Try again</Button>]
-  })
+  }) */
 })
 
 app.frame('/create', (c) => {
@@ -76,6 +76,7 @@ app.frame('/meme/i', (c) => {
     ],  
 })
 })
+
 
 devtools(app, { serveStatic })
 
