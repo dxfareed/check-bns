@@ -10,7 +10,8 @@ export const metadata: Metadata = {
   openGraph:{
     title:'Create Meme',
     description:'A meme creation frame app',
-    images:[`${process.env.NEXT_PUBLIC || 'http:://localhost:3000'}/textyeat.png`],
+    //images:[`${process.env.NEXT_PUBLIC || 'http:://localhost:3000'}/textyeat.png`],
+    images:['http:://localhost:3000/textyeat.png'],
   },
 }
 export default function RootLayout({

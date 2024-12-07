@@ -1,9 +1,22 @@
 import { ImageResponse } from 'next/og';
-
+import { resolveAddress, BASENAME_RESOLVER_ADDRESS } from "thirdweb/extensions/ens";
+import { base } from "thirdweb/chains";
+import {client} from '@/app/client'
+import { useState } from 'react';
 
 export const runtime = 'edge';
 
 export async function GET(request : Request){
+    async function Text() {
+        await resolveAddress({
+          client,
+          name: "otedola.base.eth",
+          resolverAddress: BASENAME_RESOLVER_ADDRESS,
+          resolverChain: base,
+        }).then((r)=> console.log(r))
+        .catch((e)=> console.log(e));
+      }
+   Text();
     const {searchParams} = new URL(request.url);
 
     const hasText = searchParams.has('text');
@@ -54,7 +67,8 @@ export async function GET(request : Request){
                     textTransform:"capitalize",  
                 }}
                 >
-                   {aboveText}
+                    hello world
+                   {/* aboveText */}
                 </div> 
                 <div
                 style={{

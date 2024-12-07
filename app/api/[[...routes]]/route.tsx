@@ -1,3 +1,4 @@
+
 /** @jsxImportSource frog/jsx */
 
 import { Button, Frog, TextInput } from 'frog'
@@ -50,7 +51,7 @@ app.frame('/create', (c) => {
   return c.res({
     action: '/meme/i',
     image: `${process.env.NEXT_PUBLIC}/meme/i`,
-    imageAspectRatio:"1:1",
+    imageAspectRatio:"1.91:1",
     intents: [
       <TextInput placeholder='text above, text below'/>,
      <Button value='generate'>
@@ -68,7 +69,7 @@ app.frame('/meme/i', (c) => {
  return c.res({
   action: '/create',
   image: `${process.env.NEXT_PUBLIC}/meme/i?text=${inputText}`,
-  imageAspectRatio:"1:1",
+  imageAspectRatio:"1.91:1",
     intents: [
      <Button>
         Start over
