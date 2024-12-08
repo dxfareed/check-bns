@@ -7,7 +7,7 @@ import { useState } from 'react';
 export const runtime = 'edge';
 
 export async function GET(request : Request){
-    async function Text() {
+    async function getAddress() {
         await resolveAddress({
           client,
           name: "otedola.base.eth",
@@ -16,7 +16,6 @@ export async function GET(request : Request){
         }).then((r)=> console.log(r))
         .catch((e)=> console.log(e));
       }
-   Text();
     const {searchParams} = new URL(request.url);
 
     const hasText = searchParams.has('text');
@@ -32,6 +31,8 @@ export async function GET(request : Request){
     const fontData= await fetch(
     new URL('./Oswald-VariableFont_wght.ttf', import.meta.url)
     ).then((res)=> res.arrayBuffer());
+
+    getAddress();
 
     return new ImageResponse(
         (
