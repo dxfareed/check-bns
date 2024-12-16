@@ -1,21 +1,11 @@
 import { ImageResponse } from 'next/og';
-import { resolveAddress, BASENAME_RESOLVER_ADDRESS } from "thirdweb/extensions/ens";
-import { base } from "thirdweb/chains";
 import {client} from '@/app/client'
 import { useState } from 'react';
 
 export const runtime = 'edge';
 
 export async function GET(request : Request){
-    async function getAddress() {
-        await resolveAddress({
-          client,
-          name: "otedola.base.eth",
-          resolverAddress: BASENAME_RESOLVER_ADDRESS,
-          resolverChain: base,
-        }).then((r)=> console.log(r))
-        .catch((e)=> console.log(e));
-      }
+
     const {searchParams} = new URL(request.url);
 
     const hasText = searchParams.has('text');
@@ -32,10 +22,14 @@ export async function GET(request : Request){
     new URL('./Oswald-VariableFont_wght.ttf', import.meta.url)
     ).then((res)=> res.arrayBuffer());
 
-    getAddress();
-
+    fetch('http://localhost:3001/api/jesse.base.eth')
+    .then(response => response.json())
+    .then(data => {
+    console.log(data);
+    }).catch(error => console.error('Error:', error));
     return new ImageResponse(
         (
+            <div>
             <div
                 style={{
                     display:'flex',
@@ -91,6 +85,7 @@ export async function GET(request : Request){
                 >
                     {belowText}
                 </div>
+            </div>
             </div>
         )
     )
