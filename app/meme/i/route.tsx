@@ -62,8 +62,7 @@ export async function GET(request : Request){
                     textTransform:"capitalize",  
                 }}
                 >
-                    hello world
-                   {/* aboveText */}
+                   {aboveText}
                 </div> 
                 <div
                 style={{
