@@ -64,8 +64,6 @@ app.frame('/create', (c) => {
 app.frame('/meme/i', (c) => {
 
   const {inputText} = c;
-
-  //console.log('Inputted text.', inputText);
  return c.res({
   action: '/create',
   image: `${process.env.NEXT_PUBLIC}/meme/i?text=${inputText}`,

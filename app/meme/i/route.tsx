@@ -1,11 +1,9 @@
 import { ImageResponse } from 'next/og';
-import {client} from '@/app/client'
-import { useState } from 'react';
+
 
 export const runtime = 'edge';
 
 export async function GET(request : Request){
-
     const {searchParams} = new URL(request.url);
 
     const hasText = searchParams.has('text');
@@ -22,14 +20,8 @@ export async function GET(request : Request){
     new URL('./Oswald-VariableFont_wght.ttf', import.meta.url)
     ).then((res)=> res.arrayBuffer());
 
-    fetch('http://localhost:3001/api/jesse.base.eth')
-    .then(response => response.json())
-    .then(data => {
-    console.log(data);
-    }).catch(error => console.error('Error:', error));
     return new ImageResponse(
         (
-            <div>
             <div
                 style={{
                     display:'flex',
@@ -84,7 +76,6 @@ export async function GET(request : Request){
                 >
                     {belowText}
                 </div>
-            </div>
             </div>
         )
     )
