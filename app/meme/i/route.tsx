@@ -24,9 +24,11 @@ export async function GET(request : Request){
     if(test !== "error" && " "){
         len = test.length;
         //@ts-ignore
-        ftname = String(test[0].split(".")[0]);
+        ftname = String(text.split(".")[0]);
         //@ts-ignore
-        listNames = test.map((r, index)=> {return(<li key={index} 
+        listNames = test.map((r, index)=> {
+            return(
+            <li key={index} 
             style={{ 
                 marginBottom: '2px',
                 fontSize: '30px', 
@@ -55,7 +57,7 @@ export async function GET(request : Request){
                     backgroundColor: 'blue',
                     color:'white',
                     flexDirection:'column',
-                    alignItems:"center",
+                    alignItems:"flex-start",
                     justifyContent:'flex-start',
                     fontSize:'40px',
                     position:'relative',
@@ -65,34 +67,41 @@ export async function GET(request : Request){
                <div
                  style={{
                     display: 'flex',
-                    marginTop:"50px"
+                    marginTop:"50px",
+                    textAlign:'center',
+                    justifyContent:'center',
+                    fontWeight:'900',
                 }}
-               > 💠 <div
+               ><div
                     style={{
                         display:"flex",
                         textTransform:"capitalize",
                         marginRight:"5px",
-                        marginLeft:"5px"
+                        marginLeft:"5px",
+                        fontWeight:'900',
+                        
                     }}
-               >{ftname + " "}</div> own {len} basename(s)</div>
+               >{ftname + " "}
+               </div> own {len} basename(s)</div>
                 <ol
                    style={{
                         display:'flex',
                         flexDirection:'column',
-                        gap:'5px',
+                        gap:'10px',
                         fontSize:'30px',
                         fontWeight:900,
                         justifyContent:"flex-start",
                         textAlign:"left",
                         position:"absolute",
-                        top:110,
-                        left:280,
-                        
+                        top:120,
+                        left:10,
+                        height:'500px',
+                        flexWrap:'wrap'
                     }}
                 >
                     {listNames}
                 </ol>
-            </div> : 
+                </div> : 
             <div
             style={{
                 display: 'flex',
@@ -108,7 +117,7 @@ export async function GET(request : Request){
                 paddingTop:'100px'
             }}
             >
-                This user has no basename
+                {ftname} has no basename👀
             </div>
         )
         )
