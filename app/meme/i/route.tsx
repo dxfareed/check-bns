@@ -1,6 +1,5 @@
 //'use client'
 import { ImageResponse } from 'next/og';
-import { useState } from 'react';
 
 
 export const runtime = 'edge';
@@ -15,7 +14,7 @@ export async function GET(request : Request){
     const text = hasText ? searchParams.get('text')?.slice(0, 100): '';
 
     if(text !== " "){
-        test = await fetch(`https://fetch-api-mauve-iota.vercel.app/api/${text}`)
+        test = await fetch(`${process.env.DEFINED_POINT_BNS}${text}`)
         .then((r)=>{
         return r.json()
         }).then((data)=> {return data})
