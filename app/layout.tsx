@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title:'Check Domain',
     description:'Use this frame toc check bns an address own',
     images:[`${process.env.NEXT_PUBLIC || 'http:://localhost:3000'}/image.png`],
+    //images:['http:://localhost:3000/image.png'],
   },
 }
 export default function RootLayout({
