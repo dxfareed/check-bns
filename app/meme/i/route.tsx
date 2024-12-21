@@ -14,11 +14,12 @@ export async function GET(request : Request){
     const text = hasText ? searchParams.get('text')?.slice(0, 100): '';
 
     if(text !== " "){
+        console.log("test")
         test = await fetch(`${process.env.DEFINED_POINT_BNS}${text}`)
         .then((r)=>{
         return r.json()
         }).then((data)=> {return data})
-        .catch((e)=> {return "error"})
+        .catch(()=> {return "error"})
     }
     
     if(test !== "error" && " "){
